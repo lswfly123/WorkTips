@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "PasswordView.h"
 #import "AppDelegate.h"
-@interface ViewController ()<UITextFieldDelegate>
+@interface ViewController ()<UITextFieldDelegate,PayPasswordViewDelegate>
 @property (nonatomic ,strong) PasswordView *payPassWordView;
 @property (nonatomic ,strong) UITextField *textF;
 @end
@@ -39,14 +39,16 @@
 
 - (void)withdrawMoney{
 
+    [self.textF resignFirstResponder];
     // 遮盖
     AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.payPassWordView = [[PasswordView alloc] initWithFrame:CGRectMake(0, ScreenHEIGHT, ScreenWIDTH, 150 * kHeightFromIphone6)];
     
     // 弹出框
-    self.payPassWordView.tf = self.textF;
+    self.textF.text = nil;
     self.payPassWordView.tf.keyboardType = UIKeyboardTypeNumberPad;
+    self.payPassWordView.delegate = self;
     self.payPassWordView.superVC = self;
     self.payPassWordView.backgroundColor = UIColorFromRGB(0xf3f4f5);
     
@@ -65,8 +67,17 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
 
     NSString *tobeString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [self.payPassWordView setBlackPoint:tobeString.length];
     NSLog(@"%@",tobeString);
     NSLog(@"%@",textField.text);
-    return YES;
+    if (tobeString.length > 2) {
+        return NO;
+    }else{
+    
+       return YES;
+    }
+    
+ 
+    
 }
 @end
