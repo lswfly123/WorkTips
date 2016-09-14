@@ -58,6 +58,7 @@ static NSString * const categoryDetailID = @"categoryDetailID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (tableView == self.categoryTableView) {
         // 左边的类别表格 👈
         UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:categoryID];

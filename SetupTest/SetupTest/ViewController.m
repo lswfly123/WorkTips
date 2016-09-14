@@ -64,16 +64,21 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
 
-  NSString *textStr = @"一、购卡\n  "
-                      @"有两种方式：1.实体店购买；2."
-                      @"线上购买。\n二、使用范围\n  "
-                      @"适用于大钱包内储值卡发行商户的消费，使用时间参考店面营"
-                      @"业时间。\n三、退卡\n  "
-                      @"储值卡卡内金额在正常使用期间不可办理退款，如果因店铺经"
-                      @"营不善导致的储值卡无法使用，经大钱审核通过后，按照购买"
-                      @"时的优惠比例结算至用户的购买时使用的银行卡中 "
-                      @"。另外，储值卡有效期截止后，也会将卡内余额按照比例退还"
-                      @"至您的银行卡中。";
+  NSString *textStr =
+      @"一、购卡\n  "
+      @"有两种方式：1.实体店购买；2."
+      @"线上购买。\n二、使用范围\n  "
+      @"适"
+      @"用于大钱包内储值卡发行商户的消费，使用时间参考店面营"
+      @"业时间。\n三、退卡\n  "
+      @"储"
+      @"值卡卡内金额在正常使用期间不可办理退款，如果因店铺经"
+      @"营"
+      @"不善导致的储值卡无法使用，经大钱审核通过后，按照购买"
+      @"时的优惠比例结算至用户的购买时使用的银行卡中 "
+      @"。"
+      @"另外，储值卡有效期截止后，也会将卡内余额按照比例退还"
+      @"至您的银行卡中。";
   self.textStr = textStr;
   [self test2];
 }
@@ -124,14 +129,14 @@
       [[NSMutableAttributedString alloc] initWithString:self.textStr
                                              attributes:nil];
 
-  paragra.lineSpacing = 5; // 1,设置行间距
-  paragra.paragraphSpacing = 10; // 2,设置段间距
+  paragra.lineSpacing = 5;                 // 1,设置行间距
+  paragra.paragraphSpacing = 10;           // 2,设置段间距
   paragra.alignment = UITextAlignmentLeft; // 3,设置对齐方式
-  paragra.firstLineHeadIndent = 50; // 4,首行缩进距离
-  paragra.headIndent = 10; // 5，除首行之外其他行缩进
-  paragra.tailIndent = 300; // 6,每行容纳字符的宽度
-  paragra.minimumLineHeight = 2; // 7,每行最小高度
-  paragra.maximumLineHeight = 10; // 8,每行最大高度
+  paragra.firstLineHeadIndent = 50;        // 4,首行缩进距离
+  paragra.headIndent = 10;                 // 5，除首行之外其他行缩进
+  paragra.tailIndent = 300;                // 6,每行容纳字符的宽度
+  paragra.minimumLineHeight = 2;           // 7,每行最小高度
+  paragra.maximumLineHeight = 10;          // 8,每行最大高度
   paragra.lineBreakMode = NSLineBreakByCharWrapping; // 9,换行方式
   // lineBreakMode 属性的可选项
   //    {
@@ -251,5 +256,13 @@
   [testStr addAttribute:NSParagraphStyleAttributeName
                   value:paragraph
                   range:NSMakeRange(70, 30)];
+}
+
+// 处理button上图片和文字的排布问题
+- (void)setupButtonWithImageAndText {
+
+  UIButton *menuButton = [[UIButton alloc] init];
+  [menuButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 30)];
+  [menuButton setImageEdgeInsets:UIEdgeInsetsMake(0, 50, 0, -20)];
 }
 @end
