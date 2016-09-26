@@ -21,7 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.progressed = 0;
-    ShapeLayer *shapLayer = [[ShapeLayer alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150)*0.5, 100, 150 , 150)];
+    ShapeLayer *shapLayer = [[ShapeLayer alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150)*0.5, 100, 150, 150)];
     self.shapLayer = shapLayer;
     [self.view addSubview:shapLayer];
     shapLayer.progressColor = [UIColor orangeColor];
